@@ -15,7 +15,8 @@ apt install nginx
 apt install mysql-server
 
 
-if [ -f /root/.my.cnf ]; then
+if [[ -f /root/.my.cnf ]] 
+then
 	echo "Enter database name!"
 	read dbname
     
@@ -37,8 +38,7 @@ if [ -f /root/.my.cnf ]; then
 	echo "Granting ALL privileges on ${dbname} to ${username}!"
 	mysql -e "GRANT ALL PRIVILEGES ON ${dbname}.* TO '${username}'@'localhost';"
 	mysql -e "FLUSH PRIVILEGES;"
-	echo "You're good now :)"
-	exit
+	echo "Database created successfully )"
 	
 # If /root/.my.cnf doesn't exist then it'll ask for root password	
 else
@@ -67,5 +67,5 @@ else
 	echo "Granting ALL privileges on ${dbname} to ${username}!"
 	mysql -uroot -p${rootpasswd} -e "GRANT ALL PRIVILEGES ON ${dbname}.* TO '${username}'@'localhost';"
 	mysql -uroot -p${rootpasswd} -e "FLUSH PRIVILEGES;"
-	echo "You're good now :)"
-    exist
+	echo "Database created successfully )"
+fi 
